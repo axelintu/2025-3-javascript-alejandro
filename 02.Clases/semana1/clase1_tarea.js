@@ -6,33 +6,51 @@ async function main() {
   // 2.- Pedir el segundo número
   // 3.- Pedir operador
 
-  const numero1 = Number(await ask('Dame el primer número: '));
-  const numero2 = Number(await ask('Dame el segundo número: '));
-  const operador = await ask(`Introduce el operador de tu operación: + (suma), - (resta), * (multiplicación), / (división) `);
-  let resultado = 0;
+  const numero1 = Number(await ask('Ingresa el primer número: '));
+  if (isNaN(numero1)) {
+    console.log('No es un número');
+    return;
+  };
+  const operador = await ask(`Introduce el operador de tu operación: 
+    + (suma), 
+    - (resta), 
+    * (multiplicación), 
+    / (división) 
+`);
+  if (!(operador === '+' || operador === '-' || operador === '*' || operador === '/')) {
+    console.log(operador + ' no es un operador valido');
+    return;
+  }
+  const numero2 = Number(await ask('Ingresa el segundo número: '));
+  let resultado = {
+    tipo: '',
+    final: 0
+  };
 
   switch(operador) {
-    default:
-      console.log(operador + ' no es un operador valido');
-      break;
     case '+':
-      console.log('Suma');
-      resultado = numero1 + numero2;
+      resultado.tipo = 'suma';
+      resultado.final = numero1 + numero2;
       break;
     case '-':
-      console.log('Resta');
-      resultado = numero1 - numero2;
+      resultado.tipo = 'resta';
+      resultado.final = numero1 - numero2;
       break;    
     case '*':
-      console.log('Multiplicación');
-      resultado = numero1 * numero2;
+      resultado.tipo = 'multiplicación';
+      resultado.final = numero1 * numero2;
       break;
     case '/':
-      console.log('División');
-      resultado = numero1 / numero2;
+      resultado.tipo = 'división';
+      if(numero2 > 0) {
+        resultado.final = numero1 / numero2;
+      } else {
+        console.log('El divisor debe ser mayor que 0');
+        return;
+      }
       break;
   }
-  console.log('El resultado de tu operación es: ' + resultado);
+  console.log('El resultado de tu operación ('+ resultado.tipo +') es: ' + resultado.final);
 }
 
 main();
