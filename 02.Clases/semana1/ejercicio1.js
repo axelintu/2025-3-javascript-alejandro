@@ -4,7 +4,8 @@ async function main() {
     const name = await ask('¿Cómo te llamas? ');
     const age = Number(await ask('¿Cuántos años tienes? '));
     const food = await ask('¿Cuál es tu comida favorita? ');
-    console.log('Hola ' + name + '! Tienes: ' + age + ' años, y tu comida favorita es: ' + food);
+    const mensaje = `Hola ${name}! Tienes: ${age}  años, y tu comida favorita es: ${food}`;
+    console.log(mensaje);
 }
 
 main();
