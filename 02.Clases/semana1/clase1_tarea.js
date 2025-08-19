@@ -22,35 +22,33 @@ async function main() {
     return;
   }
   const numero2 = Number(await ask('Ingresa el segundo número: '));
-  let resultado = {
-    tipo: '',
-    final: 0
-  };
+  operadorTexto = '';
+  resultado = new Number;
 
   switch(operador) {
     case '+':
-      resultado.tipo = 'suma';
-      resultado.final = numero1 + numero2;
+      operadorTexto = 'suma';
+      resultado = numero1 + numero2;
       break;
     case '-':
-      resultado.tipo = 'resta';
-      resultado.final = numero1 - numero2;
+      operadorTexto = 'resta';
+      resultado = numero1 - numero2;
       break;    
     case '*':
-      resultado.tipo = 'multiplicación';
-      resultado.final = numero1 * numero2;
+      operadorTexto = 'multiplicación';
+      resultado = numero1 * numero2;
       break;
     case '/':
-      resultado.tipo = 'división';
+      operadorTexto = 'división';
       if(numero2 > 0) {
-        resultado.final = numero1 / numero2;
+        resultado = numero1 / numero2;
       } else {
         console.log('El divisor debe ser mayor que 0');
         return;
       }
       break;
   }
-  console.log('El resultado de tu operación ('+ resultado.tipo +') es: ' + resultado.final);
+  console.log('El resultado de tu operación ('+ operadorTexto +') es: ' + resultado);
 }
 
 main();
