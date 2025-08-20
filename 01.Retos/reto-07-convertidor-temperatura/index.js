@@ -3,7 +3,7 @@ const { ask } = require('./helpers/input');
 async function main() {
   // 1) Pregunta tipo (C/F) → normaliza a mayúsculas y valida
   const scale = await ask('¿Qué tipo de temperatura ingresarás? (C/F): ');
-  const normalizedScale = scale.toUpperCase();
+  const normalizedScale = scale.trim().toUpperCase();
   if (normalizedScale !== 'F' && normalizedScale !== 'C') {
     console.log(`Tipo inválido: usa C o F.`);
     return;
