@@ -4,9 +4,11 @@ const { ask } = require('../helpers/input');
 
 async function main() {
   console.log('Estos son los números pares del 1 al 100:');
-  let numerosPares = ''
-  for (let i = 1; i <= 100; i++) {
-    if (i%2 == 0) {
+  let numerosPares = '';
+  const inicio = 1;
+  const limite = 100;
+  for (let i = inicio; i <= limite; i++) {
+    if (i%2 === 0) {
       numerosPares = numerosPares + i + ', '
     }
   }
