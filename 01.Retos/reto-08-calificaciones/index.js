@@ -16,14 +16,14 @@ function analizarCalificaciones(grades) {
     if(analysis.mayor < grades[i]) analysis.mayor = grades[i];
     if(analysis.menor > grades[i]) analysis.menor = grades[i];
   }
-  analysis.promedio = total/grades.length;
+  analysis.promedio = Number((total/grades.length).toFixed(2));
   return analysis;
 }
 
 async function main() {
   const inputCalificaciones = await ask('Escribe las calificaciones separadas por coma: ');
   const calificaciones = inputCalificaciones.split(',').map(Number);
-  calificacionesHC = [92,90,55,81,64,72,80,99];
+  // calificacionesHC = [92,90,55,81,64,72,80,99]; // For testing
   const resultado = analizarCalificaciones(calificaciones);
   console.log(resultado);
 }
