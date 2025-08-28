@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📝 My todo list</title>  
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 My To Do List</h1>
+    <div class="todo-input">
+      <input type="text" id="taskInput" placeholder="Add new task..." onkeypress="handleKeyPress(event)"/>
+      <button id="addNewItem" onclick="addTask()">+ Add</button>
+    </div>
+    <ul id="taskList">
+      <!-- <li class="todo-item"><button class="todo-delete">Borrar</button></li> -->
+    </ul>
+  </div>
+</body>
+</html>
