@@ -14,24 +14,20 @@ function addStudent() {
   const name = document.getElementById('nameInput').value.trim();
   if(name === '' || name=== isNaN) {
     alert('Debes de capturar un nombre valido');
-    return
+    return;
   }
-  const grade = parseFloat(document.getElementById('gradeInput').value);
-  // debugger;
-  // grade = parseFloat(grade);
-  if (grade > 100 || grade < 0) {
+  const inputGrade = document.getElementById('gradeInput').value;
+  if ((inputGrade > 100 || inputGrade < 0) || inputGrade === '') {
     alert('Debes de capturar una calificación valida');
     return;
-  } else {
-    // grade = 
-  }
+  } 
+  const grade = parseFloat(inputGrade);
   const student = { 
     name, 
     grade, 
     status: grade >= 70 ? "Passed" : "Failed"
   }
   students.push(student);
-  console.log(students);
   displayStudents();
   updateAverage();
   saveToLocalStorage();
@@ -44,6 +40,7 @@ function displayStudents() {
   list.innerHTML=``;
   for(let i=0; i < students.length; i++) {
     const li = document.createElement('li');
+    li.classList.add(students[i].status === 'Passed' ? 'passed' : 'failed');
     li.innerHTML = `<p>${students[i].name} - ${students[i].grade} - ${students[i].status}</p>`;
     list.appendChild(li);
   }
@@ -57,8 +54,7 @@ function updateAverage() {
     total = total + students[i].grade;
   }
   let average = total/students.length;
-  // debugger;
-  document.getElementById('averageDisplay').textContent=`Average Grade: ${average.toFixed(2)}`;
+  document.getElementById('averageDisplay').innerHTML=`<strong>Average Grade: ${average.toFixed(2)}</strong>`;
 }
 
 function saveToLocalStorage () {
